@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>碧風みくじ - 運勢表示</title>
+  <style>
+    :root{
+      --bg:#f9f8b7;
+      --accent:#fa9930;
+      --btn-bg1:#f4bb8b;
+      --btn-bg2:#eb8241;
+      --btn-text:#fbef68;
+      --font-serif: "Hiragino Mincho ProN","MS Mincho",serif;
+    }
+    html,body{height:100%;margin:0;}
+    body{
+      background:var(--bg);
+      font-family:var(--font-serif);
+      text-align:center;
+      padding:clamp(12px,4vw,24px);
+      -webkit-font-smoothing:antialiased;
+    }
+    h2{
+      font-size:clamp(20px,5vw,32px);
+      color:var(--accent);
+      margin:0 0 12px;
+    }
+    #fortuneImage{
+      width:100%;
+      max-width:360px;
+      height:auto;
+      border-radius:20px;
+      margin:12px auto;
+      display:block;
+      box-shadow:0 6px 18px rgba(254,92,10,0.12);
+    }
+    .fancy-button{
+      display:inline-block;
+      margin-top:18px;
+      background:linear-gradient(180deg,var(--btn-bg1),var(--btn-bg2));
+      color:var(--btn-text);
+      border-radius:999px;
+      padding:14px 20px;
+      font-weight:700;
+      text-decoration:none;
+      box-shadow:0 6px 12px rgba(176,113,236,0.18);
+      font-size:clamp(15px,3.2vw,18px);
+    }
+    .fancy-button:active{transform:translateY(1px)}
+  </style>
+</head>
+<body>
+  <h2>今日の運勢は…</h2>
+  <img id="fortuneImage" src="" alt="おみくじ結果">
+  <div>
+    <a id="detailLink" href="shosai.html" class="fancy-button">ラッキーアイテムを見る！</a>
+  </div>
+
+  <script>
+    const fortuneImages = [
+      "chodaikichi.png","daikichi.png","kichi.png",
+      "chukichi.png","shokichi.png","suekichi.png","kyo.png"
+    ];
+    const selected = fortuneImages[Math.floor(Math.random()*fortuneImages.length)];
+    const img = document.getElementById("fortuneImage");
+    img.src = selected;
+    img.alt = "おみくじ: " + selected.replace(/\.(png|jpg|jpeg)$/i,"");
+    img.addEventListener('error', ()=>{ img.style.opacity = 0.6; img.alt = '画像が見つかりません'; });
+    // iOS Safari のフェイバリット拡張で画像が大きくならないよう max-widthで調整済み
+  </script>
+</body>
+</html>

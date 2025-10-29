@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>碧風みくじ - 詳しい結果</title>
+  <style>
+    :root{
+      --bg:#f9f8b7;
+      --card:#fff8e1;
+      --accent:#f46118;
+      --font-serif: "Hiragino Mincho ProN","MS Mincho",serif;
+    }
+    html,body{height:100%;margin:0;}
+    body{
+      background:var(--bg);
+      font-family:var(--font-serif);
+      padding:clamp(12px,4vw,24px);
+      -webkit-font-smoothing:antialiased;
+    }
+    h2{
+      text-align:center;
+      color:#704db7;
+      margin:0 0 12px;
+      font-size:clamp(18px,4.5vw,28px);
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:12px;
+      max-width:960px;
+      margin:0 auto;
+    }
+    @media(min-width:720px){
+      .grid{grid-template-columns:1fr 1fr;}
+    }
+    .card{
+      background:var(--card);
+      border-radius:16px;
+      padding:16px;
+      box-shadow:0 6px 14px rgba(0,0,0,0.06);
+      text-align:center;
+    }
+    .label{font-weight:700;color:var(--accent);margin-bottom:8px;display:block;}
+    .line{height:2px;background:#d8b26e;margin:8px 0;border-radius:2px;}
+    .fancy-button{
+      display:inline-block;margin-top:18px;
+      background:linear-gradient(180deg,#ffecb3,#ffd54f);
+      border-radius:30px;padding:12px 18px;color:var(--accent);text-decoration:none;font-weight:700;
+    }
+  </style>
+</head>
+<body>
+  <h2>詳しい結果</h2>
+  <div class="grid" role="list">
+    <div class="card" role="listitem">
+      <span class="label">ラッキーフード</span>
+      <div class="line"></div>
+      <div id="luckyfoods">読み込み中…</div>
+    </div>
+    <div class="card" role="listitem">
+      <span class="label">ラッキーカラー</span>
+      <div class="line"></div>
+      <div id="luckycolors">読み込み中…</div>
+    </div>
+    <div class="card" role="listitem">
+      <span class="label">ラッキーアイテム</span>
+      <div class="line"></div>
+      <div id="luckyitems">読み込み中…</div>
+    </div>
+    <div class="card" role="listitem">
+      <span class="label">ラッキーミュージック</span>
+      <div class="line"></div>
+      <div id="luckymusic">読み込み中…</div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:18px">
+    <a href="start.html" class="fancy-button">終了（最初に戻る）</a>
+  </div>
+
+  <script>
+    const luckyFoods = ["ラーメン","わらびもち","メロンソーダ","はしまき","フライドポテト","お団子","クレープ","アイスクリーム"];
+    const luckyColors = ["赤","青","緑","紫","黄色","白","ピンク","オレンジ"];
+    const luckyItems = ["ぬいぐるみ","推し活グッズ","ネックレス","イヤリング","ピアス","ブレスレット"];
+    const luckyMusic = ["ジャズ","ボカロ","三味線","J-POP","アイドルソング","K-POP"];
+    function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+    document.getElementById("luckyfoods").textContent = pick(luckyFoods);
+    document.getElementById("luckycolors").textContent = pick(luckyColors);
+    document.getElementById("luckyitems").textContent = pick(luckyItems);
+    document.getElementById("luckymusic").textContent = pick(luckyMusic);
+  </script>
+</body>
+</html>
